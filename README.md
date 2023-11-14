@@ -51,38 +51,55 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 ### PROGRAM 
-/*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
 
+Developed by: Dharmaraj S
 
+RegisterNumber: 212222240025
 
+### UPCOUNTER:
+```
+module upcounter(A,clk);
+output reg [3:0]A;
+input clk;
+always@(posedge clk)
+begin
+	A[3]=(A[2]&A[1]&A[0])^A[3];
+	A[2]=(A[1]&A[0])^A[2];
+	A[1]=(A[0]^A[1]);
+	A[0]=1^A[0];
+end
+endmodule
+```
+### DOWN COUNTER:
+```
+module down(clk,A);
+input clk;
+output reg [3:0]A;
+always @(posedge clk)
+begin
+A[3]=((~A[2])&(~A[1])&(~A[0]))^A[3];
+A[2]=((~A[1])&(~A[0]))^A[2];
+A[1]=(~A[0])^A[1];
+A[0]=1^A[0];
+end
+endmodule
+```
+### RTL LOGIC UP COUNTER:
+![Screenshot 2023-10-20 091905](https://github.com/Sabariakash22009103/Exp-7-Synchornous-counters-/assets/119390227/74d2d94d-b1aa-43ee-88ee-1b8dd244acc8)
 
+### RTL LOGIC DOWN COUNTER:  
+![279404680-dcd218c1-36be-4b55-99c0-c1e00efbe82f](https://github.com/Sabariakash22009103/Exp-7-Synchornous-counters-/assets/119390227/0161199c-acdc-41e4-91c2-57ea18a764be)
 
+### Waveform Output for UP COUNTER :
+![Screenshot 2023-10-20 091841](https://github.com/Sabariakash22009103/Exp-7-Synchornous-counters-/assets/119390227/74b15ad8-252f-475f-8211-8199b25d48f3)
+### Waveform Output for UP COUNTER
+![279404993-a847070e-1490-4341-8a2a-90cfaaf83d7d](https://github.com/Sabariakash22009103/Exp-7-Synchornous-counters-/assets/119390227/f3d2c0f8-dae4-43c2-9336-1d376dee2a8d)
 
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
+### TRUTH TABLE For UPCOUNTER:
+![image](https://github.com/Sabariakash22009103/Exp-7-Synchornous-counters-/assets/119390227/2fe67778-3cf1-4586-be32-fb59f3179daa)
+### TRUTH TABLE For DOWN COUNTER:
+![image](https://github.com/Sabariakash22009103/Exp-7-Synchornous-counters-/assets/119390227/6bf959e4-6983-4c9d-984e-7addc66a9fc7)
 
 ### RESULTS 
+Thus the program has been executed successfully.
